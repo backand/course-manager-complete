@@ -1,0 +1,514 @@
+html, body {
+    height: 100%;
+}
+p, label, h1, h2, h3, h4, h5{
+    color: white;
+}
+
+body {
+    font-family: "Open Sans","lucida grande","Segoe UI",arial,verdana,"lucida sans unicode",tahoma,sans-serif;
+    min-height: 100%;
+}
+
+.bg-gray {
+    background: url(../../assets/images/bg-gray.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.bg-purple {
+    background: url(../../assets/images/bg.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.app-wrap {
+    min-height: 100%;
+    padding: 10px;
+}
+.nav-wrap {
+    height:65px;
+}
+
+.nav.navbar-nav.navbar-right li a:focus {
+    outline: 5px auto -webkit-focus-ring-color;
+}
+
+.bg-blue {
+    background: url(../../assets/images/bg-blue.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.bg-green {
+    background: url(../../assets/images/bg-green.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+
+.bg-orange {
+    background: url(../../assets/images/bg-orange.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+
+.bg-red {
+    background: url(../../assets/images/bg-red.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+
+.bg-yellow {
+    background: url(../../assets/images/bg-yellow.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.color-picker {
+    position: absolute;
+    right: 20px;
+    bottom: 10px;
+    display: inline;
+    list-style-type: none;
+}
+
+.square {
+    width: 40px;
+    height: 40px;
+    border: 2px solid white;
+    cursor: pointer;
+}
+
+.square.blue {
+    background-color: #4f92a8;
+}
+
+.square.green {
+    background-color: #87a961;
+}
+
+.square.orange {
+    background-color: #f6512d;
+}
+
+.square.red {
+    background-color: #a93d41;
+}
+
+.square.yellow {
+    background-color: #f4cb48;
+}
+
+.navbar-clear a:hover.blue {
+    color: #4f92a8;
+}
+
+.navbar-clear a:hover.green {
+    color: #87a961;
+}
+
+.navbar-clear a:hover.orange {
+    color: #f6512d;
+}
+
+.navbar-clear a:hover.red {
+    color: #a93d41;
+}
+
+.navbar-clear a:hover.yellow {
+    color: #f4cb48;
+}
+
+input:focus, textarea { outline: none !important; }
+
+*, *:before, *:after {box-sizing:  border-box !important;}
+
+.navbar-clear {
+    background: rgb(255, 255, 255); /* Fall-back for browsers that don't support rgba */
+    background: rgba(255, 255, 255, 0);
+}
+
+.navbar-clear a,
+.navbar-clear button {
+    color: white;
+    font-size: 11px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.navbar-clear button {
+    padding-top: 15px;
+    padding-bottom: 18px;
+}
+
+.navbar-clear .icon-bar {
+    background-color: white;
+}
+
+.navbar-clear .nav>li>a:hover, .navbar-clear .nav>li>a:focus,
+.navbar-clear .nav>li>button:hover, .navbar-clear .nav>li>button:focus {
+    text-decoration: none;
+    background: rgba(245, 234, 217, .6);
+}
+.collapsing, .collapse.in {
+    z-index: 2;
+    position: relative;
+    border: 10px solid white;
+}
+
+/* Start by setting display:none to make this hidden.
+   Then we position it in relation to the viewport window
+   with position:fixed. Width, height, top and left speak
+   speak for themselves. Background we set to 80% white with
+   our animation centered, and no-repeating */
+.modal {
+    display:    none;
+    position:   fixed;
+    z-index:    1000;
+    top:        0;
+    left:       0;
+    height:     100%;
+    width:      100%;
+    background: rgba(245, 234, 217, .6);
+                url('/assets/img/loader.gif')
+                50% 50%
+                no-repeat;
+}
+
+/* When the body has the loading class, we turn
+   the scrollbar off with overflow:hidden */
+body.loading {
+    overflow: hidden;
+}
+
+/* Anytime the body has the loading class, our
+   modal element will be visible */
+body.loading .modal {
+    display: block;
+}
+
+.note-header {
+    margin-left: 10px;
+}
+
+.content {
+    display: table;
+    width: 100%;
+    height: calc(100% - 65px);
+}
+.login-wrap {
+   display: table-cell;
+   text-align: center;
+   vertical-align: middle;
+}
+
+a.view {
+    color: #333;
+}
+
+a.view:hover, a.view:focus {
+    color: #333;
+}
+
+.x-small {
+    color: #333333;
+    font-size: 11px;
+}
+
+.medium {
+    font-size: 22px;
+    /*font-weight: bold;*/
+}
+
+.large {
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.content fieldset {
+    border: none;
+    position: relative;
+}
+
+.content .board {
+    min-height: 220px;
+    max-width: 290px;
+    width: 100%;
+    margin:20px auto;
+    padding: 10px;
+    background: white;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.3);
+    position: relative;
+}
+
+.content img.board-menu-icon {
+    position: absolute;
+    right: 0px;
+    cursor: pointer;
+
+}
+
+.content .board .board-menu {
+    position: absolute;
+    right: -110px;
+    top: 40px;
+    z-index: 2000;
+    background-color: white;
+    padding: 14px;
+    border: 1px solid lightgray;
+    width: 150px;
+}
+
+.content .board .board-menu a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.content .board label {
+    vertical-align: middle;
+}
+
+.content button.btn-board {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background: rgb(80, 35, 120);
+    border-radius: 0px;
+    width: 100%;
+    border: none;
+    box-shadow: none;
+    color: white;
+    height: 50px;
+    font-size: 24px;
+}
+
+.content .note {
+    min-height: 200px;
+    max-width: 290px;
+    width: 100%;
+    margin: 20px auto;
+    padding: 20px;
+    background: white;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.3);
+    position: relative;
+}
+
+.content .board fieldset, .content .note fieldset {
+    border: none;
+}
+
+.edit input[type=text], .edit textarea {
+    color: #333333;
+    border: none;
+    width: 100%;
+    resize: none;
+    background-color: #f5f5f5;
+    margin-bottom: 2px;
+}
+
+.create input[type=text], .create textarea {
+    color: black;
+    border: none;
+    width: 100%;
+    resize: none;
+    background-color: white;
+    border-bottom: 1px solid lightgray
+}
+
+.edit input[type=text]:hover, .edit textarea:hover,
+.edit input[type=text]:focus, .edit textarea:focus {
+  border: none;
+}
+
+.create fieldset > * {
+    margin: 2px 0;
+}
+
+.create form {
+    margin: 0px;
+}
+
+.form-signin {
+    min-height: 200px;
+    max-width: 100%;
+    width: 360px;
+    height: 220px;
+    margin: 0 auto;
+    position: relative;
+    padding: 20px;
+    padding-top: 34px;
+    background: white;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.3);
+}
+
+.form-signin button {
+    background:none;
+    border:none;
+    box-shadow:none;
+}
+
+.form-signin button:hover {
+    background:none;
+    border:none;
+    box-shadow:none;
+}
+
+.form-signin .large {
+    color: #333;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.form-signin input[type=text],
+.form-signin input[type=email],
+.form-signin input[type=password],
+.create textarea {
+    color: #a69f95;
+    border: none;
+    width: 100%;
+    resize: none;
+    background-color: white;
+    margin-bottom: 5px;
+}
+
+.boards,
+.notes {
+    margin-top: 20px;
+    padding: 0;
+    background: white;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.3);
+}
+
+.board-header span {
+    cursor: pointer;
+    padding-left: 15px;
+}
+
+.board-details,
+.note-details {
+    margin-top: 20px;
+    padding: 20px;
+    background: white;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.3);
+}
+
+.simple-board,
+.simple-note {
+    cursor: pointer;
+    border-bottom: 1px #CCC solid;
+    border-left: 1px #CCC solid;
+    border-right: 1px #CCC solid;
+    margin: 0px;
+    padding: 10px;
+}
+
+.bottom-right-corner {
+    position: absolute;
+    bottom: -85px;
+    right: -10px;
+}
+.bottom-right-corner-note {
+  position: absolute;
+  bottom: -70px;
+  right: -10px;
+}
+.arrow-bottom-right {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+}
+
+.simple-board:last-child,
+.simple-note:last-child {
+    border-bottom: 1px #CCC solid;
+}
+
+.active {
+    background: white;
+}
+
+.faded {
+    opacity: 0.3;
+}
+
+.cmn-toggle {
+    position: absolute;
+    margin-left: -9999px;
+    visibility: hidden;
+}
+.cmn-toggle + label {
+    display: block;
+    position: relative;
+    cursor: pointer;
+    outline: none;
+    user-select: none;
+}
+
+input.cmn-toggle-round + label {
+    padding: 2px;
+    width: 30px;
+    height: 15px;
+    background-color: #dddddd;
+    border-radius: 15px;
+    float: right;
+    top: 3px;
+}
+input.cmn-toggle-round + label:before,
+input.cmn-toggle-round + label:after {
+    display: block;
+    position: absolute;
+    top: 1px;
+    left: 1px;
+    bottom: 1px;
+    content: "";
+}
+input.cmn-toggle-round + label:before {
+    right: 1px;
+    background-color: #f1f1f1;
+    border-radius: 15px;
+    transition: background 0.4s;
+}
+input.cmn-toggle-round + label:after {
+    width: 14px;
+    background-color: #fff;
+    border-radius: 100%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    transition: margin 0.4s;
+}
+input.cmn-toggle-round:checked + label:before {
+    background-color: #8ce196;
+}
+input.cmn-toggle-round:checked + label:after {
+    margin-left: 15px;
+}
+
+.content .board .checkboxLayer {
+    display: block !important;
+    position: absolute;
+    border-radius: 0;
+    left: -6px;
+    top: 60px;
+    width: 200px;
+}
+
+.content .board .multiSelect > button {
+    display: none;
+}

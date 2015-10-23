@@ -1,0 +1,38 @@
+# general
+.idea
+.DS_Store
+*~
+.sass-cache
+
+# package control
+final/node_modules
+final/client/src/vendor
+
+# logs
+final/npm-debug.log
+
+# build
+final/build/tmp
+final/build/dist
+
+#test
+final/client/test/screenshots/*
+!final/client/test/screenshots/README.md
+final/client/test/unit-results/*
+!final/client/test/unit-results/README.md
+
+skelton/node_modules
+skelton/client/src/vendor
+
+# logs
+skelton/npm-debug.log
+
+# build
+skelton/build/tmp
+skelton/build/dist
+
+#test
+skelton/client/test/screenshots/*
+!skelton/client/test/screenshots/README.md
+skelton/client/test/unit-results/*
+!skelton/client/test/unit-results/README.md

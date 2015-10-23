@@ -1,0 +1,10 @@
+{
+  "name": "angular-kickstart",
+  "dependencies": {
+    "normalize-css": "~3.0.3",
+    "angular": "~1.4.6",
+    "angular-mocks": "~1.4.6",
+    "angular-ui-router": "~0.2.15",
+    "angularbknd-sdk": "1.8.0"
+  }
+}

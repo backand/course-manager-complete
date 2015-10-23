@@ -1,0 +1,79 @@
+<div class="container">
+  <h4><a ui-sref="root.courses">Back to Courses</a></h4>
+
+  <div class="row">
+      <div class="col-sm-4">
+            <!-- NEW COURSE -->
+            <div class="create board">
+                <div class="caption">
+                    <form
+                        name="vm.createForm"
+                        class="create-form"
+                        role="form"
+                        ng-submit="vm.createTask(vm.newTask, vm.createForm.$valid)"
+                        novalidate>
+                        <fieldset>
+                            <div>
+                                <input
+                                    type="text"
+                                    class="medium form-group"
+                                    ng-model="vm.newTask.description"
+                                    placeholder="Task Description"
+                                    required>
+                            </div>
+
+                            <div>
+                              <label>Due Date:</label>
+                                <input
+                                    type="date"
+                                    class="form-group" style="width:250px;"
+                                    ng-model="vm.newTask.dueDate"
+                                    placeholder="When is the due date?"
+                                    required>
+                            </div>
+                        </fieldset>
+                        <button
+                                type="submit"
+                                class="btn btn-default btn-board">
+                            <span class="glyphicon glyphicon-plus"></span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-4" ng-repeat="task in vm.tasks">
+            <div class="edit board">
+                <div class="pull-right">
+                    <a href="" ng-click="vm.deleteTask(task.id)">Delete</a>
+                </div>
+                <div>
+                    <input
+                        type="text"
+                        class="medium"
+                        ng-model="task.description"
+                        ng-blur="vm.updateTask(task)"
+                        placeholder="Task Description">
+                </div>
+                <br/>
+                <div>
+                    <input type="date"
+                       ng-model="task.dueDate"
+                       ng-value="task.dueDate | date:'yyyy-MM-dd'"
+                       ng-blur="vm.updateTask(task)"
+                       placeholder="Task due date.">
+                </div>
+                <br/>
+                <div>
+                    <input type="checkbox"
+                       ng-model="task.completed"
+                       ng-blur="vm.updateTask(task)"
+                       placeholder="Task due date.">
+                    <label>Completed ?</label>
+                </div>
+
+                <span ng-show="vm.loading" class="glyphicon glyphicon-refresh"></span>
+            </div>
+        </div>
+    </div>
+</div>

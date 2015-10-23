@@ -1,0 +1,74 @@
+<div class="container">
+    <div class="row">
+        <div class="col-sm-4">
+            <!-- NEW COURSE -->
+            <div class="create board">
+                <div class="caption">
+                    <form
+                        name="vm.createForm"
+                        class="create-form"
+                        role="form"
+                        ng-submit="vm.createCourse(vm.newCourse, vm.createForm.$valid)"
+                        novalidate>
+                        <fieldset>
+                            <div>
+                                <input
+                                    type="text"
+                                    class="medium"
+                                    ng-model="vm.newCourse.name"
+                                    placeholder="Course Name"
+                                    required>
+                            </div>
+                            <br/>
+                            <div>
+                                <input
+                                    type="text"
+                                    ng-model="vm.newCourse.description"
+                                    placeholder="what's it about?"
+                                    required>
+                            </div>
+                        </fieldset>
+                        <button
+                                type="submit"
+                                class="btn btn-default btn-board">
+                            <span class="glyphicon glyphicon-plus"></span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-4" ng-repeat="course in vm.courses">
+            <div class="edit board">
+                <div class="pull-right">
+                    <a href="" ng-click="vm.deleteCourse(course.id)"><span class="glyphicon glyphicon-trash"></span></a>
+                </div>
+                <div>
+                    <input
+                        type="text"
+                        class="medium"
+                        ng-model="course.name"
+                        ng-blur="vm.updateCourse(course, $index)"
+                        placeholder="Course Name">
+                </div>
+                <br/>
+                <div>
+                    <textarea
+                       style="height:60px;"
+                       ng-model="course.description"
+                       ng-blur="vm.updateCourse(course, $index)"
+                       placeholder="Course description."></textarea>
+                </div>
+                <button
+                      type="submit"
+                      class="btn btn-default btn-board"
+                      ui-sref="root.tasks({courseId: course.id})">Tasks >>
+                </button>
+                <!--<div>Tasks:</div>-->
+                <!--<div>{{course.task1}}</div>-->
+                <!--<div>{{course.task2}}</div>-->
+                <span ng-show="vm.loading[$index]" class="glyphicon glyphicon-refresh"></span>
+            </div>
+        </div>
+    </div>
+</div>
