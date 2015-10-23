@@ -19,9 +19,9 @@
               controller: 'HomeCtrl',
               controllerAs: 'vm',
               resolve: {
-                data: function(DataService) {
-                  return DataService.get();
-                }
+                //data: function(DataService) {
+                //  return DataService.get();
+                //}
               }
             }
           }
@@ -33,8 +33,8 @@
    * @description Controller
    */
   function HomeCtrl(DataService, data) {
-    var home = this;
-    home.data = data.data;
+    var vm = this;
+    vm.data = data.data;
   }
 
 
