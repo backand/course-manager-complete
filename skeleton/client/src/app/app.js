@@ -9,13 +9,16 @@
     $urlRouterProvider.otherwise('/');
     $logProvider.debugEnabled(true);
 
-    BackandProvider.setAppName('-Your App Name --');
+
+    //BackandProvider.setAppName('-Your App Name --');
     //BackandProvider.setAnonymousToken('Your Anonymous Token');
     //BackandProvider.setSignUpToken('Your SignUp Token');
 
     $httpProvider.interceptors.push('httpInterceptor');
+
     $stateProvider
       .state('root', {
+        abstract: true,
         views: {
           'header': {
             templateUrl: 'src/common/header.tpl.html',
@@ -48,8 +51,7 @@
       'common.services.data',
       'common.directives.version',
       'common.filters.uppercase',
-      'common.interceptors.http',
-      'templates'
+      'common.interceptors.http'
     ])
     .config(config)
     .run(run)
