@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-      .module('common.services.data')
+      .module('common.services.data',[])
       .factory('DataService', ['$http', 'Backand', dataService]);
 
   function dataService($http, Backand) {
