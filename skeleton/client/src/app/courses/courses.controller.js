@@ -27,12 +27,12 @@
    * @name  HomeCtrl
    * @description Controller
    */
-  function HomeCtrl(data) {
+  function CoursesCtrl(data) {
     var home = this;
     home.data = data.data;
   }
 
   angular.module('home', [])
     .config(config)
-    .controller('HomeCtrl',HomeCtrl);
+    .controller('CoursesCtrl',CoursesCtrl);
 })();

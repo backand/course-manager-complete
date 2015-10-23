@@ -103,7 +103,31 @@ off and require users to login first.
 ## Building the Courses page
 
 #### Build course service
-Copy dataService under /client/src/common/services into coursesService and change the name to CourseService.
+* Copy dataService under /client/src/common/services into coursesService and change the name to CourseService.
+* Update the Backand URL with the correct object name: '/1/objects/courses'
+
+```JavaScript
+    //return Backand url for object
+    function getUrl() {
+      return Backand.getApiUrl() + '/1/objects/courses';
+    }
+
+    //return Backand url with object's id
+    function getUrlForId(objectId) {
+      return Backand.getApiUrl() + '/1/objects/courses/' + objectId;
+    }
+```
+* Add the new file into index.html
+```JavaScript
+    <script type="text/javascript" src="src/common/services/coursesService.js"></script>
+```
+
+#### Build Courses controller and template (mv)
+* Create new folder `courses` under /src/app
+* Copy home controller to be courses.controller.js into the `/src/app/courses`
+* Change the name to CourseCtrl in all places
+
+
 
 
 

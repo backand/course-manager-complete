@@ -3,9 +3,9 @@
 
   angular
       .module('common.services.data')
-      .factory('DataService', ['$http', 'Backand', dataService]);
+      .factory('CoursesService', ['$http', 'Backand', CoursesService]);
 
-  function dataService($http, Backand) {
+  function CoursesService($http, Backand) {
 
     var factory = {
       list: list,
@@ -20,12 +20,12 @@
 
     //return Backand url for object
     function getUrl() {
-      return Backand.getApiUrl() + '/1/objects/object';
+      return Backand.getApiUrl() + '/1/objects/courses';
     }
 
     //return Backand url with object's id
     function getUrlForId(objectId) {
-      return Backand.getApiUrl() + '/1/objects/object/' + objectId;
+      return Backand.getApiUrl() + '/1/objects/courses/' + objectId;
     }
 
     //get list of items in the object
