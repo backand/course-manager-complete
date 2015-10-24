@@ -6,7 +6,7 @@ Install **node.js**. Then **gulp** and **bower** if you haven't yet.
 
     $ npm -g install gulp bower
 
-After that, let's clone the angular-kickstart as the skeleton to the project:
+After that, let's clone the course manager seed project, which will serve as our application's skeleton:
 
     $ git clone https://github.com/backand/course-manager-complete.git
     $ cd course-manager-complete
