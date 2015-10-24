@@ -93,7 +93,7 @@ Update App to work with Backand, update the following lines with your new app's 
 
 ```JavaScript
     BackandProvider.setAppName('-Your App Name --');
-    //BackandProvider.setAnonymousToken('Your Anonymous Token');
+    BackandProvider.setAnonymousToken('Your Anonymous Token');
 ```
 
 * The AnonymousToken will let you use the app without the need for username and password. Later you can add turn it 
