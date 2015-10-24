@@ -329,6 +329,40 @@ the following HTML (to make it look better we use Bootstrap classes):
 
 ```
 
+#### Build Tasks module
+In order to load the tasks we need to expand the courses service. For the CRUD functionality we will add a new a new 
+service and new view.
+
+* Load a tasks for specific course, add this method in coursesService.js:
+
+```JavaScript
+//return all tasks for specific course
+function getTasks(courseId){
+  return $http.get(getUrl() + '/' + courseId + '/tasks');
+}
+```
+
+* Copy dataService under /client/src/common/services into tasksService and change the name to TasksService.
+* Update the Backand URL with the correct object name: '/1/objects/tasks'
+
+```JavaScript
+
+    //return Backand url for object
+    function getUrl() {
+      return Backand.getApiUrl() + '/1/objects/tasks';
+    }
+
+    //return Backand url with object's id
+    function getUrlForId(objectId) {
+      return Backand.getApiUrl() + '/1/objects/tasks/' + objectId;
+    }
+```
+
+* Add the controller to input.html:
+
+```HTML
+  <script type="text/javascript" src="src/app/courses/tasks.controller.js"></script>
+```
 
 
 
