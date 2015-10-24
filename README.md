@@ -6,7 +6,7 @@ Install **node.js**. Then **gulp** and **bower** if you haven't yet.
 
     $ npm -g install gulp bower
 
-After that, let's clone the angular-kickstart as the skeleton to the project:
+After that, let's clone the course manager seed project, which will serve as our application's skeleton:
 
     $ git clone https://github.com/backand/course-manager-complete.git
     $ cd course-manager-complete
@@ -93,7 +93,7 @@ Update App to work with Backand, update the following lines with your new app's 
 
 ```JavaScript
     BackandProvider.setAppName('-Your App Name --');
-    //BackandProvider.setAnonymousToken('Your Anonymous Token');
+    BackandProvider.setAnonymousToken('Your Anonymous Token');
 ```
 
 * The AnonymousToken will let you use the app without the need for username and password. Later you can add turn it 
