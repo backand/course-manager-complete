@@ -39,8 +39,8 @@
 
     function readCourses(){
       CoursesService.list().then(
-        function(couses){
-          vm.courses = couses.data.data;
+        function(coursesList){
+          vm.courses = coursesList.data.data;
         }
       )
     }
