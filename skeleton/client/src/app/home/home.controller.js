@@ -3,7 +3,7 @@
 
   angular.module('home', [])
       .config(config)
-      .controller('HomeCtrl',['DataService','date', HomeCtrl]);
+      .controller('HomeCtrl',['data', HomeCtrl]);
 
   /**
    * @name  config
@@ -19,9 +19,9 @@
               controller: 'HomeCtrl',
               controllerAs: 'vm',
               resolve: {
-                //data: function(DataService) {
-                //  return DataService.get();
-                //}
+                data: function(DataService) {
+                  return DataService.get();
+                }
               }
             }
           }
@@ -32,7 +32,7 @@
    * @name  HomeCtrl
    * @description Controller
    */
-  function HomeCtrl(DataService, data) {
+  function HomeCtrl(data) {
     var vm = this;
     vm.data = data.data;
   }

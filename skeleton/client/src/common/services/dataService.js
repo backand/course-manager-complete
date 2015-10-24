@@ -3,11 +3,12 @@
 
   angular
       .module('common.services.data',[])
-      .factory('DataService', ['$http', 'Backand', dataService]);
+      .factory('DataService', ['$http', 'Backand', DataService]);
 
-  function dataService($http, Backand) {
+  function DataService($http, Backand) {
 
     var factory = {
+      get: get,
       list: list,
       create: create,
       update: update,
@@ -17,6 +18,10 @@
     return factory;
 
     ////////////////////////////////
+
+    function get() {
+      return ['some', 'data'];
+    }
 
     //return Backand url for object
     function getUrl() {
