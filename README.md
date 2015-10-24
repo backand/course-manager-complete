@@ -88,23 +88,26 @@ Create new App in Backand with the following model:
 ]
 
 ```
+Next, we need to set your app to allow Anonymous access. This will allow you to use the app without a need for usernames and passwords. You can later disable anonymous access and require registrations and logins if you wish. This is accomplished from the application dashboard as follows:
 
-Update App to work with Backand, update the following lines with your new app's info
+* Open section `Security & Auth`
+* Select `Configuration`
+* Click the toggle on the right side of the screen next to `Anonymous Access`
+* Assign a role to Anonymous users (use `Admin` for now)
+* Copy the value from the field under `Anonymous Token`
+
+Once this has been finished, we can connect your app's code to your new Backand application. Update the following lines in `/client/src/app.app.js` with the following information:
 
 ```JavaScript
-    BackandProvider.setAppName('-Your App Name --');
-    BackandProvider.setAnonymousToken('Your Anonymous Token');
+    BackandProvider.setAppName('-Your App Name-');
+    BackandProvider.setAnonymousToken('-Your Anonymous Token-');
 ```
-
-* The AnonymousToken will let you use the app without the need for username and password. Later you can add turn it 
-off and require users to login first.
-
 
 ## Building the Courses page
 
 #### Build course service
-* Copy dataService under /client/src/common/services into coursesService and change the name to CourseService.
-* Update the Backand URL with the correct object name: '/1/objects/courses'
+* Copy the contents of file `dataService.js` under /client/src/common/services into a new file - `coursesService.js` -  and change the class name to CourseService.
+* Update the Backand URLs with the correct object name: `/1/objects/courses`. The final code for getUrl and getUrlForId will resemble the following:
 
 ```JavaScript
     //return Backand url for object
@@ -117,36 +120,35 @@ off and require users to login first.
       return Backand.getApiUrl() + '/1/objects/courses/' + objectId;
     }
 ```
-* Add the new file into index.html
+* Add the `coursesService.js` file reference into `index.html`
 
 ```HTML
     <script type="text/javascript" src="src/common/services/coursesService.js"></script>
 ```
 
-#### Build Courses controller and template (mv)
+#### Build Courses controller and template (ModelView)
 * Create new folder `courses` under /src/app
-* Copy home controller to be courses.controller.js into the `/src/app/courses`
-* Change the name to CoursesCtrl in all places
-* Add CoursesService to the controller and a new method to load all the service (Replace DataService in all places)
-* In the resolve method call `CoursesService.list();`
-* Change the data input parameter to `coursesList`
-* The main controller code should be:
+* Copy the file `home.controller.js`  from `/src/app/home`into the new courses folder, and rename the file as `courses.controller.js`. The new file name will be `/src/app/courses/courses.controller.js`
+* Edit the file, changing all instances of `HomeCtrl` to `CoursesCtrl`
+* Add `CoursesService` to the controller, replacing all instances of `DataService` 
+* Add a new method to load all of the courses from the coursesService. Put this in the `resolve` handler, replacing the commented code from the original `HomeCtrl`. The call will be to `CoursesService.list();`
+* Change the `dataService` parameter name to `coursesList`
+* Modify the main copntroller body to have the following code:
 
 ```JavaScript
-
     var vm = this;
     vm.courses = null;
 
     //get the courses from the resolve
     vm.courses = coursesList.data.data;
 ```
-* Add the controller to input.html:
+* Add the controller to `input.html`:
 
 ```HTML
   <script type="text/javascript" src="src/app/courses/courses.controller.js"></script>
 ```
 
-* Create a new HTML template `courses.tpl.html" and add a simple code to use ng-repeater to show all courses
+* Create a new HTML template `courses.tpl.html`, and add simple code (using `ng-repeat`) to display all courses:
 
 ```HTML
 Courses:
@@ -157,7 +159,7 @@ Courses:
 </div>
 ```
 
-* Now Update $stateProvider in the controller to be like this:
+* Now Update `$stateProvider` in the controller to tie it all together:
 
 ```JavaScript
     $stateProvider
@@ -178,14 +180,16 @@ Courses:
       })
 ```
 
-At this point if we navigate to /courses we should see the list (or empty list if we haven't add any from the Backand
- cloud service).
+At this point if we navigate to /courses we should see the list of courses available in your Backand app. This list may be empty if you haven't added any records to the Backand cloud service, but will update when you do!
+
+#### Taking stock
+
+It's important to note that at this point, you have a fully-functional web application. You have a server (your Backand App) and a client configured to connect with it. Your app will load the course list, fetching all of the data contained within your server, and will reflect any updates made on the server. From this point forward, it's all additional features!
  
 #### Complete the CRUD for Courses
-To complete the CRUD we would need to add the Create, Update and Delete methods that call the service and the 
-template HTML.
+An app that simply lists courses is not particularly useful - we need to build out CRUD support for the Courses object.To do this, we need to add Create, Update, and Delete methods that call the Backand service, and update the template HTML to incorporate the new functionality.
  
-* Add CRUD methods:
+* First, add the CRUD methods. Paste the following code into `courses.controller.js`:
 
 ```JavaScript
     var vm = this;
@@ -197,8 +201,8 @@ template HTML.
 
     function readCourses(){
       CoursesService.list().then(
-        function(couses){
-          vm.courses = couses.data.data;
+        function(coursesList){
+          vm.courses = coursesList.data.data;
         }
       )
     }
@@ -242,12 +246,9 @@ template HTML.
           console.log(reason);
         });
     }
-
   }
-
 ```
-* Update the template with section that adds new courses and display the courses. Replace the existing template with 
-the following HTML (to make it look better we use Bootstrap classes):
+* Update the template with a section that allows you to adds new courses, as well as display the existing courses. Replace the HTML in `courses.tpl.html` with the following markup (*Note:* the seed project uses [Bootstrap](http://getbootstrap.com/2.3.2/) to enhance the appearance of the HTML):
 
 ```HTML
 
