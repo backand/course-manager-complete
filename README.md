@@ -133,7 +133,7 @@ Once this has been finished, we can connect your app's code to your new Backand 
 * Add `CoursesService` to the controller, replacing all instances of `DataService` 
 * Add a new method to load all of the courses from the coursesService. Put this in the `resolve` handler, replacing the commented code from the original `HomeCtrl`. The call will be to `CoursesService.list();`
 * Change the `dataService` parameter name to `coursesList`
-* Modify the main copntroller body to have the following code:
+* Modify the main controller body to have the following code:
 
 ```JavaScript
     var vm = this;
