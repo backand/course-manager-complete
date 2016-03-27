@@ -2,27 +2,27 @@
 
 ### Getting started
 
-Install **node.js**. Then **gulp** and **bower** if you haven't yet.
+Install **node.js**, then install **gulp**, and **bower** using **npm** with the following command.
 
     $ npm -g install gulp bower
 
-After that, let's clone the course manager seed project, which will serve as our application's skeleton:
+Next clone the course manager seed project, which will serve as our application's skeleton:
 
     $ git clone https://github.com/backand/course-manager-complete.git
     $ cd course-manager-complete
     $ cd skeleton
     
-Install bower and npm dependencies, and run the application in development mode.
+Install the bower and npm dependencies, then run the application in development mode with gulp.
 
     $ npm install
     $ bower install
     $ gulp serve
 
-You are now ready to go, your application is available at **http://127.0.0.1:3000**.
+Your application is now available at **http://127.0.0.1:3000**.
 
-**Every file you add, edit or delete into the `/client` folder will be handled by the build system**.
+**Every file you add, edit or delete into the `/client` folder will be automatically detected by the build system**.
 
-Create new App in Backand with the following model:
+Now, let's tie the app together with backand. Create a new App in Backand from your account dashboard. Use the following model for your app:
 
 ```JSON
 [
@@ -88,7 +88,7 @@ Create new App in Backand with the following model:
 ]
 
 ```
-Next, we need to set your app to allow Anonymous access. This will allow you to use the app without a need for usernames and passwords. You can later disable anonymous access and require registrations and logins if you wish. This is accomplished from the application dashboard as follows:
+Next, set your app to allow Anonymous access. This will allow you to use the app without having to build a set of users that have the appropriate permissions. This is accomplished from the application dashboard as follows:
 
 * Open section `Security & Auth`
 * Select `Configuration`
@@ -96,7 +96,9 @@ Next, we need to set your app to allow Anonymous access. This will allow you to 
 * Assign a role to Anonymous users (use `Admin` for now)
 * Copy the value from the field under `Anonymous Token`
 
-Once this has been finished, we can connect your app's code to your new Backand application. Update the following lines in `/client/src/app.app.js` with the following information:
+After your app has reached a good state, you can re-enable user authentication if you wish. Simply disable anonymous access, then configure users and registration for your application by following our [documentation](http://docs.backand.com/en/latest/index.html)
+
+Once this has been finished, you next need to connect your app's code to your new Backand application. Update the following lines in `/client/src/app.js` with the following information:
 
 ```JavaScript
     BackandProvider.setAppName('-Your App Name-');
@@ -106,7 +108,7 @@ Once this has been finished, we can connect your app's code to your new Backand 
 ## Building the Courses page
 
 #### Build course service
-* Copy the contents of file `dataService.js` under /client/src/common/services into a new file - `coursesService.js` -  and change the class name to CourseService.
+* Copy the contents of file `dataService.js` (in /client/src/common/services) into a new file - `coursesService.js`,  and change the class name to CourseService.
 * Update the Backand URLs with the correct object name: `/1/objects/courses`. The final code for getUrl and getUrlForId will resemble the following:
 
 ```JavaScript
@@ -120,15 +122,15 @@ Once this has been finished, we can connect your app's code to your new Backand 
       return Backand.getApiUrl() + '/1/objects/courses/' + objectId;
     }
 ```
-* Add the `coursesService.js` file reference into `index.html`
+* Next, add the `coursesService.js` file reference into `index.html`
 
 ```HTML
     <script type="text/javascript" src="src/common/services/coursesService.js"></script>
 ```
 
 #### Build Courses controller and template (ModelView)
-* Create new folder `courses` under /src/app
-* Copy the file `home.controller.js`  from `/src/app/home`into the new courses folder, and rename the file as `courses.controller.js`. The new file name will be `/src/app/courses/courses.controller.js`
+* Create a new folder `courses` in /src/app
+* Copy the file `home.controller.js`  from `/src/app/home`into the new `courses` folder, and rename the file as `courses.controller.js`. The new full file name will be `/src/app/courses/courses.controller.js`
 * Edit the file, changing all instances of `HomeCtrl` to `CoursesCtrl`
 * Add `CoursesService` to the controller, replacing all instances of `DataService` 
 * Add a new method to load all of the courses from the coursesService. Put this in the `resolve` handler, replacing the commented code from the original `HomeCtrl`. The call will be to `CoursesService.list();`
@@ -331,10 +333,10 @@ An app that simply lists courses is not particularly useful - we need to build o
 ```
 
 #### Build Tasks module
-In order to load the tasks we need to expand the courses service. For the CRUD functionality we will add a new a new 
+In order to load the tasks for each course, we need to expand the courses service. For the CRUD functionality we will add a new a new 
 service and new view.
 
-* Load a tasks for specific course, add this method in coursesService.js:
+* Add this method in coursesService.js to load tasks for a course:
 
 ```JavaScript
 //return all tasks for specific course
@@ -343,7 +345,7 @@ function getTasks(courseId){
 }
 ```
 
-* Copy dataService under /client/src/common/services into tasksService and change the name to TasksService.
+* Copy `dataService` from `/client/src/common/services` into a new file - `tasksService` - and change the class name in the code to `TasksService`.
 * Update the Backand URL with the correct object name: '/1/objects/tasks'
 
 ```JavaScript
@@ -365,6 +367,6 @@ function getTasks(courseId){
   <script type="text/javascript" src="src/app/courses/tasks.controller.js"></script>
 ```
 
-
+At this point, your app should be configured to pull in tasks for the currently selected course. Play around with the functionality, and see how it ties your app's display to the data stored in Backand's database.
 
 
